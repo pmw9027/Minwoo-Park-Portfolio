@@ -1,10 +1,14 @@
 # Minwoo Park's a Portfolio
 
-
+<style>
+table {
+    width:100%;
+}
+</style>
 
 |NO.|Period|Duration|Project Name|GitHub <br> Repository|
 |:--:|:-:|:-:|:-:|:-:|
-|1| (2019) 11.30-12.01 | 2 days w/o sleeping | `LEVELUPTHON` | [Link][2] |
+|1| (2019) 11.30-12.01 | 2 days <br> w/o sleeping | `LEVELUPTHON` | [Link][2] |
 |2| (2019) 01.01-09.01 | 8 months | `Study for my master's degree` | [Link][1] |
 |3| (2019) 10.22-12.20 | 1 month | `Naver Whale App Contest` | [Link][3] |
 |4| (2017) 01.01–02.14 | 2 months | `A Project for Studying` <br> ` Express.js Framework and Python Language` | [Link][6] |
