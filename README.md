@@ -2,7 +2,7 @@
 
 
 
-|NO.|Period|Duration|Project Name|GitHub Repository|
+|NO.|Period|Duration|Project Name|GitHub <br> Repository|
 |:--:|:-:|:-:|:-:|:-:|
 |1| 2019.11.30 - 2019.12.01 | 2 days w/o sleeping | `LEVELUPTHON` | [Link][2] |
 |2| 2019.01.01 - 2019.09.01 | 8 months | `Study for my master's degree` | [Link][1] |
