@@ -1,6 +1,5 @@
 # Minwoo Park's a Portfolio
 
-<<<<<<< HEAD
 <!-- <style>
 table {
     width:100%;
