@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>RIVAL</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+</head>
+<body>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <!-- Note: The "styleN" class below should match that of the banner element. -->
+    <div th:replace="header :: copy"></div>
+    <!-- Menu -->
+
+    <!-- Banner -->
+    <!-- Note: The "styleN" class below should match that of the header element. -->
+    <section id="banner" class="style2">
+        <div class="inner">
+							<span class="image">
+								<img src="/img/soccer.jpg" alt="" />
+							</span>
+            <header class="major">
+                <h1>Stadium</h1>
+            </header>
+            <div class="content">
+                <p>You have to make a team and invite friend from team. Also you can apply to others team<br />
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main -->
+    <div id="main">
+        <!-- One -->
+        <section id="one">
+            <div class="inner">
+                <header class="major">
+                    <h2>Stadium Info</h2>
+                </header>
+                <div>
+                    <form th:action="@{/match/new}"  method="post" name="Sport_Select">
+                        <p>Title: <label type="text" name="title" id="title"/></p>
+                        <p>TeamName: <label th:text="${stadium.toString()}" type="text" name="team" id="team"/></p>
+                        <p>
+                            <input type="button" value="Modify" onclick="javascript:writeCheck();"/>
+                            <input type="reset" value="List" />
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- Footer -->
+    <div th:replace="footer :: copy"></div>
+
+</div>
+
+<!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+<script src="/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>RIVAL</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/css/main.css"/>
+    <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css"/><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css"/><![endif]-->
+</head>
+<body>
+
+<!-- Wrapper -->
+<div id="wrapper">
+    <!-- Header -->
+    <!-- Note: The "styleN" class below should match that of the banner element. -->
+    <div th:replace="header :: copy"></div>
+
+    <!-- Banner -->
+    <!-- Note: The "styleN" class below should match that of the header element. -->
+    <section id="banner" class="style2">
+        <div class="inner">
+            <span class="image">
+                <img src="/img/soccer.jpg" alt=""/>
+            </span>
+            <header class="major">
+                <h1>Team</h1>
+            </header>
+            <div class="content">
+                <p>You have to make a team and invite friend from team. Also you can apply to others team<br/>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main -->
+    <div id="main">
+        <!-- One -->
+        <section id="one">
+            <div class="inner">
+                <header class="major">
+                    <h2>Make your team</h2>
+                </header>
+                <div>
+                    <form th:action="@{/match/modify}" th:object="${matchDo}" method="post" name="Sport_Select">
+                        <p>Title: <input type="text" name="title" id="title" th:field="*{title}"/></p>
+                        <p>TeamName: <input type="text" name="team" id="team"/></p>
+                        Type:
+                        <div class="select-wrapper">
+                            <select name="type" id="type" th:field="*{type}">
+                                <option value="" class="locationcolor">* 종목 선택 *</option>
+                                <option value="축구" class="locationcolor">축구</option>
+                                <option value="야구" class="locationcolor">야구</option>
+                                <option value="농구" class="locationcolor">농구</option>
+                                <option value="족구" class="locationcolor">족구</option>
+                                <option value="당구" class="locationcolor">당구</option>
+                                <option value="볼링" class="locationcolor">볼링</option>
+                            </select>
+                        </div>
+                        <p></p>
+                        City:
+                        <div class="select-wrapper">
+                            <select name="city" id="city" th:field="*{city}" onchange="Choice_City(this.options[this.selectedIndex].value);">
+                                <option value="" class="locationcolor">* 도시 선택 *</option>
+                                <option value="서울" class="locationcolor">서울</option>
+                                <option value="경기" class="locationcolor">경기</option>
+                                <option value="인천" class="locationcolor">인천</option>
+                                <option value="강원" class="locationcolor">강원</option>
+                                <option value="충청" class="locationcolor">충청</option>
+                                <option value="전라" class="locationcolor">전라</option>
+                                <option value="경상" class="locationcolor">경상</option>
+                                <option value="제주" class="locationcolor">제주</option>
+                            </select>
+                        </div>
+                        <p></p>
+                        Stadium:
+                        <div class="select-wrapper" name="stadium" id="stadium" th:field="*{stadium}">
+                            <select name="stadium_none">
+                                <option value="" class="locationcolor">* 장소 선택 *</option>
+                                <option class="locationcolor">도시를 선택해주세요</option>
+                            </select>
+                            <!--서울시 경기장-->
+                            <select name="stadium_seoul" style="display: none;">
+                                <option value="" class="locationcolor">* 장소 선택 *</option>
+                                <option value="올림픽경기장" class="locationcolor" name="stadium">올림픽경기장</option>
+                                <option value="상암월드컵경기장" class="locationcolor" name="stadium">상암월드컵경기장</option>
+                            </select>
+                            <!--경기도 경기장-->
+                            <select name="stadium_gyeonggi" style="display: none;">
+                                <option value="" class="locationcolor">* 장소 선택 *</option>
+                                <option value="한신대학교" class="locationcolor" name="stadium">한신대학교</option>
+                                <option value="광명시축구장" class="locationcolor" name="stadium">광명시축구장</option>
+                            </select>
+                            <!--인천 경기장-->
+                            <select name="stadium_incheon" style="display: none;">
+                                <option value="" class="locationcolor">* 장소 선택 *</option>
+                            </select>
+                            <!--강원도 경기장-->
+                            <select name="stadium_gangwon" style="display: none;">
+                                <option value="" class="locationcolor">* 장소 선택 *</option>
+                            </select>
+                            <!--충청도 경기장-->
+                            <select name="stadium_chungcheong" style="display: none;">
+                                <option value="" class="locationcolor">* 장소 선택 *</option>
+                            </select>
+                            <!--전라도 경기장-->
+                            <select name="stadium_jeonla" style="display: none;">
+                                <option value="" class="locationcolor">* 장소 선택 *</option>
+                            </select>
+                            <!--경상도 경기장-->
+                            <select name="stadium_gyeongsang" style="display: none;">
+                                <option value="" class="locationcolor">* 장소 선택 *</option>
+                            </select>
+                            <!--제주도 경기장-->
+                            <select name="stadium_jeju" style="display: none;">
+                                <option value="" class="locationcolor">* 장소 선택 *</option>
+                            </select>
+                        </div>
+                        <p></p>
+                        <p>Content:
+                            <textarea name="contents" id="contents" th:field="*{contents}"></textarea>
+                        </p>
+                        <div>
+                            <input type="button" value="Submit" onclick="javascript:writeCheck();"/>
+                            <input type="reset" value="Reset" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+    <div th:replace="footer :: copy"></div>
+</div>
+
+<!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+<script src="/js/main.js"></script>
+<script language="javascript" th:inline="javascript">
+    function Choice_City(obj) {
+        var value = document.forms.Sport_Select;
+        if(obj=="서울"){
+            value.stadium_none.style.display="none"
+            value.stadium_seoul.style.display = "";
+            value.stadium_gyeonggi.style.display = "none";
+            value.stadium_incheon.style.display="none";
+            value.stadium_chungcheong.style.display="none"
+            value.stadium_jeonla.style.display="none"
+            value.stadium_gyeongsang.style.display="none"
+            value.stadium_jeju.style.display="none";
+        }
+        else if(obj=="경기"){
+            value.stadium_none.style.display="none"
+            value.stadium_seoul.style.display = "none";
+            value.stadium_gyeonggi.style.display = "";
+            value.stadium_incheon.style.display="none";
+            value.stadium_chungcheong.style.display="none"
+            value.stadium_jeonla.style.display="none"
+            value.stadium_gyeongsang.style.display="none"
+            value.stadium_jeju.style.display="none";
+        }
+        else if(obj=="인천"){
+            value.stadium_none.style.display="none"
+            value.stadium_seoul.style.display = "none";
+            value.stadium_gyeonggi.style.display = "none";
+            value.stadium_incheon.style.display="";
+            value.stadium_chungcheong.style.display="none"
+            value.stadium_jeonla.style.display="none"
+            value.stadium_gyeongsang.style.display="none"
+            value.stadium_jeju.style.display="none";
+        }
+        else if(obj=="충청"){
+            value.stadium_none.style.display="none"
+            value.stadium_seoul.style.display = "none";
+            value.stadium_gyeonggi.style.display = "none";
+            value.stadium_incheon.style.display="none";
+            value.stadium_chungcheong.style.display=""
+            value.stadium_jeonla.style.display="none"
+            value.stadium_gyeongsang.style.display="none"
+            value.stadium_jeju.style.display="none";
+        }
+        else if(obj=="전라"){
+            value.stadium_none.style.display="none"
+            value.stadium_seoul.style.display = "none";
+            value.stadium_gyeonggi.style.display = "none";
+            value.stadium_incheon.style.display="none";
+            value.stadium_chungcheong.style.display="none"
+            value.stadium_jeonla.style.display=""
+            value.stadium_gyeongsang.style.display="none"
+            value.stadium_jeju.style.display="none";
+        }
+        else if(obj=="경상"){
+            value.stadium_none.style.display="none"
+            value.stadium_seoul.style.display = "none";
+            value.stadium_gyeonggi.style.display = "none";
+            value.stadium_incheon.style.display="none";
+            value.stadium_chungcheong.style.display="none"
+            value.stadium_jeonla.style.display="none"
+            value.stadium_gyeongsang.style.display=""
+            value.stadium_jeju.style.display="none";
+        }
+        else if(obj=="제주"){
+            value.stadium_none.style.display="none"
+            value.stadium_seoul.style.display = "none";
+            value.stadium_gyeonggi.style.display = "none";
+            value.stadium_incheon.style.display="none";
+            value.stadium_chungcheong.style.display="none"
+            value.stadium_jeonla.style.display="none"
+            value.stadium_gyeongsang.style.display="none"
+            value.stadium_jeju.style.display="";
+        }
+    }
+    function writeCheck() {
+        var form = document.Sport_Select;
+        if(!form.title.value){
+            alert("제목을 적어주세요");
+            form.title.focus();
+            return;
+        }
+        else if(!form.type.value){
+            alert("종목을 선택해주세요")
+            form.type.focus();
+            return;
+        }
+        else if(!form.city.value){
+            alert("도시를 선택해주세요")
+            form.city.focus();
+            return;
+        }
+        /*    else if(!form.stadium.value){
+         alert("경기장을 선택해주세요")
+         form.stadium.focus();
+         return;
+         }*/
+        else{
+            form.submit();
+        }
+    }
+</script>
+</body>
+</html>

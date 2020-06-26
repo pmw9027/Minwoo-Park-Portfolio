@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>RIVAL</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="/css/main.css" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+	<!--KAKAO SDK -->
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<style>
+		*.dis[disabled] {background:#eee; text-decoration:line-through;}
+	</style>
+
+</head>
+<body xmlns:th="http://www.w3.org/1999/xhtml">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+	<!-- Header -->
+	<!-- Note: The "styleN" class below should match that of the banner element. -->
+	<div th:replace="header :: copy"></div>
+
+		<!--		<ul class="actions vertical">
+                    <li><a href="#" class="button special fit">Login</a></li>
+                </ul>-->
+	<!-- Banner -->
+	<!-- Note: The "styleN" class below should match that of the header element. -->
+	<section id="banner" class="style2">
+		<div class="inner">
+							<span class="image">
+								<img src="/img/pic07.jpg" alt="" />
+							</span>
+			<header class="major">
+				<h1>Matching Board</h1>
+			</header>
+			<div class="content">
+				<p>Lorem ipsum dolor sit amet nullam consequat<br />
+					sed veroeros. tempus adipiscing nulla.</p>
+			</div>
+		</div>
+	</section>
+	<!-- Main -->
+	<div id="main">
+		<!-- One -->
+		<section id="one">
+			<div class="inner">
+				<header class="major">
+					<!--종목 선택에 따라 title 변경-->
+					<div th:if="${title}=='축구'">
+                        <h2>축구&nbsp;·&nbsp;풋살</h2>
+					</div>
+					<div th:if="${title}=='야구'">
+						<h2>야구</h2>
+					</div>
+					<div th:if="${title}=='농구'">
+						<h2>농구</h2>
+					</div>
+					<div th:if="${title}=='족구'">
+						<h2>족구</h2>
+					</div>
+					<div th:if="${title}=='당구'">
+						<h2>당구</h2>
+					</div>
+					<div th:if="${title}=='볼링'">
+						<h2>볼링</h2>
+					</div>
+					<!--지역 선택에 따라 게시판 변경-->
+					<div class="select-wrapper">
+						<form th:action="@{/match/board/list}" method="get" name="location">
+							<input type="hidden" name="type" th:value="${title}"/>
+							<input type="hidden" name="page" value="0"/>
+							<input type="hidden" name="size" value="10"/>
+                          		<select name="city" class="button" id="search" onchange='if(this.value != 0) { this.form.submit(); }'>
+									<option value="0" th:selected="${city}==''" class="locationcolor">지역선택</option>
+									<option value="서울" th:selected="${city}=='서울'" class="locationcolor">서울</option>
+									<option value="경기" th:selected="${city}=='경기'" class="locationcolor">경기</option>
+									<option value="인천" th:selected="${city}=='인천'" class="locationcolor">인천</option>
+									<option value="강원" th:selected="${city}=='강원'" class="locationcolor">강원</option>
+									<option value="충청" th:selected="${city}=='충청'" class="locationcolor">충청</option>
+									<option value="전라" th:selected="${city}=='전라'" class="locationcolor">전라</option>
+									<option value="경상" th:selected="${city}=='경상'" class="locationcolor">경상</option>
+									<option value="제주" th:selected="${city}=='제주'" class="locationcolor">제주</option>
+								</select>
+							</form>
+					</div>
+				</header>
+				<div class="table-wrapper">
+					<table>
+						<thead>
+							<tr>
+								<!--<th>번호</th>-->
+								<th>제목</th>
+								<th>신청팀</th>
+								<th>게임시간</th>
+								<th>팀원수</th>
+								<th>조회</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="b : ${board}">
+								<!--<td>1</td>-->
+								<td><a th:href="@{/match/board/}+${b.id}" th:text="${b.title}">축구해요</a></td>
+								<td th:text="${b.team}">김희중</td>
+								<td th:text="${b.time_game}">2017-04-01 17:00</td>
+								<td th:text="${b.people_num}"></td>
+								<td>5</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!--게시판 등록 버튼-->
+				<div class="boardwrite">
+					<a th:href="@{/match/new}" class="button small icon fa-pencil">글쓰기</a>
+				</div>
+				<!--페이징 처리-->
+				<div>
+					<ul class="pagination pagination-sm" id="frmSearch">
+						<li>
+							<a th:if="${board.number}==0" class="button small disabled">prev</a>
+							<a th:if="${board.number}>0" th:href="@{/match/board/list(type=${title},page=${board.number-1},size=10,city=${city})}" class="button small">prev</a>
+						</li>
+
+						<li th:each="index :${#numbers.sequence(1, __${board.totalPages == 0}__ ? 1 : (__${board.totalPages &lt; 5}__ ? __${board.totalPages}__ : __${board.number}__+5))}">
+							<a th:if="${board.number+1==index}" th:text="${index}" th:href="@{/match/board/list(type=${title},page=${index-1},size=10,city=${city})}" class="page active">1</a>
+							<a th:if="${board.number+1!=index}" th:text="${index}" th:href="@{/match/board/list(type=${title},page=${index-1},size=10,city=${city})}" class="page">1</a>
+						</li>
+
+						<li>
+							<a th:if="${board.number}==${board.totalPages-1}" class="button small disabled">next</a>
+							<a th:if="${board.number}!=${board.totalPages-1}" th:href="@{/match/board/list(type=${title},page=${board.number+1},size=10,city=${city})}" class="small button">next</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+	</div>
+
+	<!-- Footer -->
+	<div th:replace="footer :: copy"></div>
+
+</div>
+
+<!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<script src="/js/main.js"></script>
+<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+<script src="/js/main.js"></script>
+<script>
+    Kakao.init('d32b44e7f16d211afcab733f0a367dda');
+    document.getElementById("logout").onclick = function () {
+        Kakao.Auth.logout(function () {
+            console.log("test");
+            setTimeout(function(){
+                location.href = "/login"
+            },1000);
+        });
+    };
+</script>
+</body>
+</html>

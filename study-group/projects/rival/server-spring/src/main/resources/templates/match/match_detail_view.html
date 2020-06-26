@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>RIVAL</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/css/main.css"/>
+    <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css"/><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css"/><![endif]-->
+</head>
+<body>
+
+<!-- Wrapper -->
+<div id="wrapper">
+    <!-- Header -->
+    <!-- Note: The "styleN" class below should match that of the banner element. -->
+    <div th:replace="header :: copy"></div>
+
+    <!-- Banner -->
+    <!-- Note: The "styleN" class below should match that of the header element. -->
+    <section id="banner" class="style2">
+        <div class="inner">
+            <span class="image">
+                <img src="/img/soccer.jpg" alt=""/>
+            </span>
+            <header class="major">
+                <h1>Team</h1>
+            </header>
+            <div class="content">
+                <p>You have to make a team and invite friend from team. Also you can apply to others team<br/>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main -->
+    <div id="main">
+        <!-- One -->
+        <section id="one">
+            <div class="inner">
+                <header class="major">
+                    <h2>Make your team</h2>
+                </header>
+                <div>
+                    <p>Title: <label th:text="${board.title}"></label></p>
+                    <p>TeamName: <label type="text" name="team" id="team"></label></p>
+                    <p>Type: <label th:text="${board.type}"></label></p>
+                    <p>City: <label th:text="${board.city}"></label></p>
+                    <p>Stadium: <label type="text" th:text="${board.stadium}"></label></p>
+                    <p>Content: <label th:text="${board.contents}" name="contents" id="contents"></label></p>
+                </div>
+                <div>
+                    <a th:href="@{/match/modify/}+${board.id}" class="button icon fa-pencil" >수정</a>
+                    <a th:href="@{/match/board/list(type=${board.type},page=0,size=10,city=${board.city})}" class="button icon fa-pencil">목록</a>
+                </div>
+
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+    <div th:replace="footer :: copy"></div>
+</div>
+
+<!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+<script src="/js/main.js"></script>
+</body>
+</html>

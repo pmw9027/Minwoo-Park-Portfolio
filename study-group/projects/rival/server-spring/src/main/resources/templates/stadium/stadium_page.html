@@ -1,0 +1,18 @@
+<div id="page" th:fragment="copy (values, value2)" xmlns:th="http://www.w3.org/1999/xhtml">
+    <ul class="pagination pagination-sm" id="frmSearch">
+        <li>
+            <a th:if="${values.number}==0" class="button small disabled">prev</a>
+            <a th:if="${values.number}>0" th:href="@{'/'+${value2}+ '/board/list?page=' +${values.number-1}+ ',size=10'}" class="button small">prev</a>
+        </li>
+
+        <li th:each="index :${#numbers.sequence(1, __${values.totalPages == 0}__ ? 1 : (__${values.totalPages &lt; 5}__ ? __${values.totalPages}__ : __${values.number}__+5))}">
+            <a th:if="${values.number+1==index}" th:text="${index}" th:href="@{'/' +${value2}+ '/board/list?page=' +${index-1}+ ',size=10'}" class="page active">1</a>
+            <a th:if="${values.number+1!=index}" th:text="${index}" th:href="@{'/' +${value2}+ '/board/list?page=' +${index-1}+ ',size=10'}" class="page">1</a>
+        </li>
+
+        <li>
+            <a th:if="${values.number}==${values.totalPages-1}" class="button small disabled">next</a>
+            <a th:if="${values.number}!=${values.totalPages-1}" th:href="@{'/'+${value2}+ '/board/list?page=' +${values.number+1}+ ',size=10'}" class="small button">next</a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('kakao-android-sdk-analytics-1.0.15.jar'))

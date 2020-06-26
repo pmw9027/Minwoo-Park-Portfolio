@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>RIVAL</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+    <!--KAKAO SDK -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <style>
+        *.dis[disabled] {background:#eee; text-decoration:line-through;}
+    </style>
+
+</head>
+<body xmlns:th="http://www.w3.org/1999/xhtml">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <!-- Note: The "styleN" class below should match that of the banner element. -->
+    <div th:replace="header :: copy"></div>
+
+    <!--		<ul class="actions vertical">
+                <li><a href="#" class="button special fit">Login</a></li>
+            </ul>-->
+    <!-- Banner -->
+    <!-- Note: The "styleN" class below should match that of the header element. -->
+    <section id="banner" class="style2">
+        <div class="inner">
+							<span class="image">
+								<img src="/img/pic07.jpg" alt=""/>
+							</span>
+            <header class="major">
+                <h1>Matching Board</h1>
+            </header>
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet nullam consequat<br />
+                    sed veroeros. tempus adipiscing nulla.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Main -->
+    <div id="main">
+        <!-- One -->
+            <div class="inner">
+                <div class="table-wrapper">
+                    <div class="inner">   
+                        <form method="post" action="#">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <img src="/img/banner.png" style="width: 180px; width: 200px;" />
+                                </div>   
+                                <div class="col-sm-9">
+                                    <p>Name <label>아이디</label></p>
+                                </div>
+                            </div>
+                            <br/>
+                            <div>
+                            <p>Age <label>26</label></p>
+                            <p>Height <label>170cm</label></p>
+                            <p>Weight <label>70Kg</label></p>
+                            </div>
+                            <div class="row" style="margin-left:10px;">
+                                <div class="col-sm-2">
+                                    <input type="checkbox" id="select_Football" name="select_Football" onclick="showCheckboxes()"/>
+                                    <label for="select_Football">FootBall</label>
+                                    
+                                    <div id="checkboxes">
+                                            <li type="none"><input type="checkbox" id="select_Football_ss" />
+                                                <label for="select_Football_ss">SS</label></li>
+                                            <li type="none"><input type="checkbox" id="select_Football_cf" />
+                                                <label for="select_Football_cf">CF</label></li>
+                                            <li type="none"><input type="checkbox" id="select_Football_rw" />
+                                                <label for="select_Football_rw">RW</label></li>
+                                            <li type="none"><input type="checkbox" id="select_Football_cm" />
+                                                <label for="select_Football_cm">CM</label></li>
+                                            <li type="none"><input type="checkbox" id="select_Football_rm" />
+                                                <label for="select_Football_rm">RM</label></li>
+                                            <li type="none"><input type="checkbox" id="select_Football_lm" />
+                                                <label for="select_Football_lm">LM</label></li>
+                                            <li type="none"><input type="checkbox" id="select_Football_cb" />
+                                                <label for="select_Football_cb">CM</label></li>
+                                            <li type="none"><input type="checkbox" id="select_Football_rb" />
+                                                <label for="select_Football_rb">RB</label></li>
+                                            <li type="none"><input type="checkbox" id="select_Football_lb" />
+                                                <label for="select_Football_lb">LB</label></li>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-sm-2">
+                                <input type="checkbox" id="select_Baseball" name="select_Baseball"/>
+                                    <label for="select_Baseball">Baseball</label></div>
+                                
+                                <div class="col-sm-2">
+                                <input type="checkbox" id="select_Basketball" name="select_Basketball"/>
+                                    <label for="select_Basketball">Basketball</label></div>
+                                <div class="col-sm-2">
+                                <input type="checkbox" id="select_Volleyfootball" name="select_Volleyfootball"/>
+                                    <label for="select_Volleyfootball">VolleyFootBall</label></div>
+                                <div class="col-sm-2">
+                                <input type="checkbox" id="selet_Billiards" name="selet_Billiards"/>
+                                    <label for="selet_Billiards">Billiards</label></div>
+                                <div class="col-sm-2">
+                                <input type="checkbox" id="select_Bowling" name="select_Bowling"/>
+                                    <label for="select_Bowling">Bowling</label></div>
+                            </div>
+                            
+                            <ul class="actions">
+                                <li><input type="submit" value="Modify" class="special"/></li>
+                            </ul>
+                        </form>		  
+                    </div>            
+                </div>
+            </div>
+
+
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="footer :: copy"></div>
+
+</div>
+
+<!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<script src="/js/main.js"></script>
+<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+<script src="/js/main.js"></script>
+<script>
+    Kakao.init('d32b44e7f16d211afcab733f0a367dda');
+    document.getElementById("logout").onclick = function () {
+        Kakao.Auth.logout(function () {
+            console.log("test");
+            setTimeout(function(){
+                location.href = "/login"
+            },1000);
+        });
+    };
+</script>
+<script>
+   function showCheckboxes() {
+       var expanded = false;
+       var checkboxes = document.getElementById("checkboxes");
+       if (!expanded) {
+           checkboxes.style.display = "block";
+           expanded = true;
+       } else {
+           checkboxes.style.display = "none";
+           expanded = false;
+       }
+   }
+</script>
+</body>
+</html>

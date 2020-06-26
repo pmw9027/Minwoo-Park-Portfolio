@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="0.9"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MenuActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="8dp">
+
+        <Button
+            android:id="@+id/footballButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="@drawable/soccer"
+            android:elevation="0dp"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:text="축구\nFoot Ball"
+            android:textColor="#FFFFFF"
+            android:textSize="11dp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/baseballButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="@drawable/baseball"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:text="야구\nBase ball"
+            android:textColor="#FFFFFF"
+            android:textSize="11dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <Button
+            android:id="@+id/basketballButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="@drawable/basketball"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:text="농구\nBasket Ball"
+            android:textColor="#FFFFFF"
+            android:textSize="11dp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/volleyfootballButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="@drawable/volleyfootball"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:text="족구\nVolley Foot Ball"
+            android:textColor="#FFFFFF"
+            android:textSize="11dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="166dp">
+
+        <Button
+            android:id="@+id/billiardButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="@drawable/billiards"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:text="당구\nBilliards"
+            android:textColor="#FFFFFF"
+            android:textSize="11dp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/bowingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="@drawable/bowling"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:text="볼링\nbowing"
+            android:textColor="#FFFFFF"
+            android:textSize="11dp" />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout >
+

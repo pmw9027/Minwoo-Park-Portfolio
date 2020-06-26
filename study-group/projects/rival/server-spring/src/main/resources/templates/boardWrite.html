@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>RIVAL</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--[if lte IE 8]><script src="js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+    <!--KAKAO SDK -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <style>
+        *.dis[disabled] {background:#eee; text-decoration:line-through;}
+    </style>
+</head>
+<body xmlns:th="http://www.w3.org/1999/xhtml">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <!-- Note: The "styleN" class below should match that of the banner element. -->
+    <div th:replace="header :: copy"></div>
+
+    <!-- Login -->
+    <nav id="login">
+        <ul class="links">
+            <li class="button special fit">Login</li>
+            <li th:if ="${session} == null"><a th:href="@{/login} " class="button fit" id="kakao-login-btn">LogIn</a></li>
+            <li  th:if ="${session} != null"><span id = "logout" class="button fit">LogOut</span></li>
+        </ul>
+        <!--		<ul class="actions vertical">
+                    <li><a href="#" class="button special fit">Login</a></li>
+                </ul>-->
+    </nav>
+    <!-- Banner -->
+    <!-- Note: The "styleN" class below should match that of the header element. -->
+    <section id="banner" class="style2">
+        <div class="inner">
+							<span class="image">
+								<img src="img/pic07.jpg" alt="" />
+							</span>
+            <header class="major">
+                <h1>Landing</h1>
+            </header>
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet nullam consequat<br />
+                    sed veroeros. tempus adipiscing nulla.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main -->
+    <div id="main">
+
+
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="footer :: copy"></div>
+
+</div>
+
+</body>
+</html>

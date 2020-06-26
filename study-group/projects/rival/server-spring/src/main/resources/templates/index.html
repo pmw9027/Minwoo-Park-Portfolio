@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>RIVAL</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
+
+		<!--KAKAO SDK -->
+		<script src="/js/jquery.min.js"></script>
+		<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+		<script th:inline="javascript">
+			//축구 matching 페이지 이동
+			function soccer(){
+			    document.selectSoccer.submit();
+			}
+			//야구 matching 페이지 이동
+			function  baseball() {
+                document.selectBaseball.submit();
+            }
+            //농구 matching 페이지 이동
+            function basketball() {
+                document.selectBasketball.submit();
+            }
+            //족구 matching 페이지 이동
+            function volleyfootball() {
+                document.selectVolleyfootball.submit();
+            }
+			//당구 matching 페이지 이동
+            function billiards() {
+                document.selectBilliards.submit();
+            }
+			//볼링 matching 페이지 이동
+            function bowling() {
+                document.selectBowling.submit();
+            }
+		</script>
+	</head>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<div th:replace="header :: copy"></div>
+				<!-- Banner -->
+					<section id="banner" class="major">
+						<div class="inner">
+							<header class="major">
+								<h1>RIVAL</h1>
+							</header>
+							<div class="content">
+								<p>RIVAL is Sport Game Matching Service
+                                </p>
+								<ul class="actions">
+									<li><a href="#one" class="button next scrolly">Matching</a></li>
+								</ul>
+							</div>
+						</div>
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+						<!-- One -->
+							<section id="one" class="tiles">
+								<article>
+									<span class="image">
+										<img src="img/soccer.jpg" alt="" />
+									</span>
+									<header class="major">
+										<form name="selectSoccer" method="get" th:action="@{/match/board/list}">
+											<input type="hidden" name="type" value="축구"/>
+											<input type="hidden" name="page" value="0"/>
+											<input type="hidden" name="size" value="10"/>
+											<input type="hidden" name="city" value="서울"/>
+											<h3><a href="javascript:soccer()" class="link">축구, 풋살</a></h3>
+											<p>Foot Ball</p>
+										</form>
+									</header>
+								</article>
+								<article>
+									<span class="image">
+										<img src="img/baseball.jpg" alt="" />
+									</span>
+									<header class="major">
+										<form name="selectBaseball" method="get" th:action="@{/match/board/list}">
+											<input type="hidden" name="type" value="야구"/>
+											<input type="hidden" name="page" value="0"/>
+											<input type="hidden" name="size" value="10"/>
+											<input type="hidden" name="city" value="서울"/>
+											<h3><a href="javascript:baseball()" class="link">야구</a></h3>
+											<p>base ball</p>
+										</form>
+									</header>
+								</article>
+								<article>
+									<span class="image">
+										<img src="img/basketball.jpg" alt="" />
+									</span>
+									<header class="major">
+										<form name="selectBasketball" method="get" th:action="@{/match/board/list}">
+											<input type="hidden" name="type" value="농구"/>
+											<input type="hidden" name="page" value="0"/>
+											<input type="hidden" name="size" value="10"/>
+											<input type="hidden" name="city" value="서울"/>
+											<h3><a href="javascript:basketball()" class="link">농구</a></h3>
+											<p>basketball</p>
+										</form>
+									</header>
+								</article>
+								<article>
+									<span class="image">
+										<img src="img/minisoccer.png" alt="" />
+									</span>
+									<header class="major">
+										<form name="selectVolleyfootball" method="get" th:action="@{/match/board/list}">
+											<input type="hidden" name="type" value="족구"/>
+											<input type="hidden" name="page" value="0"/>
+											<input type="hidden" name="size" value="10"/>
+											<input type="hidden" name="city" value="서울"/>
+											<h3><a href="javascript:volleyfootball()" class="link">족구</a></h3>
+											<p> Foot Volleyball </p>
+										</form>
+									</header>
+								</article>
+								<article>
+									<span class="image">
+										<img src="img/billiadr.png" alt="" />
+									</span>
+									<header class="major">
+										<form name="selectBilliards" method="get" th:action="@{/match/board/list}">
+											<input type="hidden" name="type" value="당구"/>
+											<input type="hidden" name="page" value="0"/>
+											<input type="hidden" name="size" value="10"/>
+											<input type="hidden" name="city" value="서울"/>
+											<h3><a href="javascript:billiards()" class="link">당구</a></h3>
+											<p>Billiards</p>
+										</form>
+									</header>
+								</article>
+								<article>
+									<span class="image">
+										<img src="img/bowling.jpg" alt="" />
+									</span>
+									<header class="major">
+										<form name="selectBowling" method="get" th:action="@{/match/board/list}">
+											<input type="hidden" name="type" value="볼링"/>
+											<input type="hidden" name="page" value="0"/>
+											<input type="hidden" name="size" value="10"/>
+											<input type="hidden" name="city" value="서울"/>
+											<h3><a href="javascript:bowling()" class="link">볼링</a></h3>
+											<p>Bowling</p>
+										</form>
+									</header>
+								</article>
+							</section>
+					</div>
+
+				<!-- Footer -->
+				<div th:replace="footer :: copy"></div>
+			</div>
+		<!-- Scripts -->
+			<script src="/js/jquery.scrolly.min.js"></script>
+			<script src="/js/jquery.scrollex.min.js"></script>
+			<script src="/js/skel.min.js"></script>
+			<script src="/js/util.js"></script>
+			<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
+			<script src="/js/main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>RIVAL</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--[if lte IE 8]><script src="/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+    <!--KAKAO SDK -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <style>
+        *.dis[disabled] {background:#eee; text-decoration:line-through;}
+    </style>
+</head>
+<body xmlns:th="http://www.w3.org/1999/xhtml">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <!-- Note: The "styleN" class below should match that of the banner element. -->
+    <div th:replace="header :: copy"></div>
+
+    <!-- Login -->
+    <nav id="login">
+        <ul class="links">
+            <li class="button special fit">Login</li>
+            <li th:if ="${session} == null"><a th:href="@{/login} " class="button fit" id="kakao-login-btn">LogIn</a></li>
+            <li  th:if ="${session} != null"><span id = "logout" class="button fit">LogOut</span></li>
+        </ul>
+        <!--		<ul class="actions vertical">
+                    <li><a href="#" class="button special fit">Login</a></li>
+                </ul>-->
+    </nav>
+    <!-- Banner -->
+    <!-- Note: The "styleN" class below should match that of the header element. -->
+    <section id="banner" class="style2">
+        <div class="inner">
+							<span class="image">
+								<img src="img/pic07.jpg" alt="" />
+							</span>
+            <header class="major">
+                <h1>Landing</h1>
+            </header>
+            <div class="content">
+                <p>Lorem ipsum dolor sit amet nullam consequat<br />
+                    sed veroeros. tempus adipiscing nulla.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- One -->
+        <section id="one">
+            <div class="inner">
+                <header class="major">
+                    <h2 th:if="${title}=='축구'">축구&nbsp;·&nbsp;풋살</h2>
+                    <h2 th:if="${title}=='야구'">야구</h2>
+                    <h2 th:if="${title}=='농구'">농구</h2>
+                    <h2 th:if="${title}=='족구'">족구</h2>
+                    <h2 th:if="${title}=='당구'">당구</h2>
+                    <h2 th:if="${title}=='볼링'">볼링</h2>
+                </header>
+                <table class="table">
+                    <tr class="table_tr">
+                        <th>name</th>
+                        <th>city</th>
+                        <th>type</th>
+                        <th>captain</th>
+                    </tr>
+                    <tr th:each="team : ${teams}">
+                        <td ><img th:src = "@{'/img/' + ${team.emblem}}" width="60px" height="60px"/></td>
+                        <td th:text="${team.name}">김희중</td>
+                        <td th:text="${team.type}">김희중</td>
+                        <td th:text="${team.city}">김희중</td>
+                        <td th:text="${team.captain}">김희중</td>
+                    </tr>
+                </table>
+
+                <div th:replace="page :: copy (${teams}, 'team')"></div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="footer :: copy "></div>
+
+</div>
+
+<!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<!--[if lte IE 8]><script src="/js/ie/respond.min.js"></script><![endif]-->
+<script src="/js/main.js"></script>
+</body>
+</html>

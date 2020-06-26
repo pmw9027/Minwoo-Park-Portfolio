@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sports">
+        <item>축구</item>
+        <item>농구</item>
+        <item>야구</item>
+    </string-array>
+</resources>

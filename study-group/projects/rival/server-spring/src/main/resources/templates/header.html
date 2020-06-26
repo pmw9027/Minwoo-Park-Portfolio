@@ -1,0 +1,58 @@
+<header id="header" th:fragment="copy" xmlns:th="http://www.w3.org/1999/xhtml">
+
+
+        <a th:href="@{/index}" class="logo"><strong>RIVAL</strong> <span>by PSCK  </span></a>
+    <nav>
+        <a href="#menu">Menu</a>
+    </nav>
+    <nav >
+        <a id="menu_button" href="#login">Login</a>
+    </nav>
+
+    <!-- Login -->
+    <nav id="menu">
+        <ul class="actions vertical">
+            <li><a href="#one" class="button special fit">sport</a></li>
+        </ul>
+        <ul class="links">
+            <li><a th:href="@{/index}">Home</a></li>
+            <li><a th:href="@{/team}">Team</a></li>
+            <li><a th:href="@{/stadium}">Stadium</a></li>
+            <li><a th:href="@{/match}">Match</a></li>
+        </ul>
+
+    </nav>
+    <!-- Login -->
+    <nav id="login">
+        <ul class="links">
+            <li class="button special fit" th:if ="${session.userLoginInfo} == null">Login</li>
+            <li class="button special fit" th:if ="${session.userLoginInfo} != null">Logout</li>
+        </ul>
+
+        <ul id="loginmenu" class="links">
+            <li id="kakao_login_menu_button"><a href="javascript:loginWithKakao()">KaKaoLogin</a></li>
+            <li id="facebook_login_menu_button"><a href="javascript:loginWithKakao()">FacebookLogin</a></li>
+            <li id="naver_login_menu_button"><a href="javascript:loginWithKakao()">NaverLogin</a></li>
+            <li id="account_menu_button"><a th:href="@{/myinfo}">Account</a></li>
+            <li id="community_menu_button"><a th:href="@{/community}">Community</a></li>
+            <li id="logout_menu_button"><a href="javascript:logoutWithKakao()">Logout</a></li>
+        </ul>
+    </nav>
+    <script src="/js/kakao.js"></script>
+    <script th:inline="javascript">
+        Kakao.Auth.getStatus(function(statusObj) {
+            var kakao = statusObj['status'];
+            if (kakao == "connected") {
+                document.getElementById("menu_button").textContent=JSON.stringify(statusObj['user']['properties']['nickname']);
+                document.getElementById("kakao_login_menu_button").remove()
+                document.getElementById("facebook_login_menu_button").remove()
+                document.getElementById("naver_login_menu_button").remove()
+            }
+            else {
+                document.getElementById("menu_button").textContent="Login";
+                document.getElementById("account_menu_button").remove()
+                document.getElementById("logout_menu_button").remove()
+            }
+        });
+    </script>
+</header>
