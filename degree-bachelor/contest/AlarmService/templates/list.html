@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>프로젝트 작업</title>
+<meta name="Author" content="" />
+
+<link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous" />
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">-->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<!-- Optional theme -->
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+<!-- <script type="text/javascript">
+function toggle(source) {
+      checkboxes = document.getElementsByName('chbox');
+      for(var i=0, n=checkboxes.length;i &lt; n;i++) {
+        checkboxes[i].checked = source.checked;
+      }
+    }
+        </script> -->
+
+
+<!--  <script>
+function popUp(w, h){
+ x = (screen.availWidth - w) / 2;
+ y = (screen.availHeight - h) / 2;
+ window.open('request.html', 'pop','width='+w+', height='+h+', left='+x+', top='+y);
+}
+</script>-->
+<script>
+    $('#pagination-demo').twbsPagination({
+    totalPages: 35,  // 전체 page 수
+    visiblePages: 5,  // 출력될 page 수
+    onPageClick: function (event, page) {
+         $('#page-content').text('Page ' + page);
+}
+});
+        
+function search() { 
+   var name = document.getElementById("searchForm").elements["searchItem"].value;
+   var pattern = name.toLowerCase();
+   var targetId = "";
+ 
+   var divs = document.getElementsByClassName("col-md-2");
+   for (var i = 0; i &lt; divs.length; i++) {
+      var para = divs[i].getElementsByTagName("p");
+      var index = para[0].innerText.toLowerCase().indexOf(pattern);
+      if (index != -1) {
+         targetId = divs[i].parentNode.id;
+         document.getElementById(targetId).scrollIntoView();
+         break;
+      }
+   }  
+}
+</script>
+<!-- 여기 이어서 하기-->
+
+<script>
+ $(document).ready(function(){
+    //최상단 체크박스 클릭
+    $("#checkall").click(function(){
+        //클릭되었으면
+        if($("#checkall").prop("checked")){
+            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+            $("input[name=chbox]").prop("checked",true);
+            //클릭이 안되있으면
+        }else{
+            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+            $("input[name=chbox]").prop("checked",false);
+        }
+    })
+}) 
+</script>
+
+
+</head>
+
+<body>
+	<!--
+<header class="header">
+    <span class="title"><b>Plossom</b></span>
+    <nav class="nav">
+      <pre> <span class="sign">회원가입</span>    <span class="login">로그인</span></pre>
+    </nav>
+    </header>
+
+
+    <aside class="aside">
+        <oi> 작업
+            <ul><a href="index.html">프로젝트 작업</a></ul>
+            <ul><a href="index1.html">요구사항 관리</a></ul>
+            <ul><a href="index2.html">테스트 관리</a></ul>
+        </oi>
+    </aside>
+-->
+	<div class="container">
+		<article class="article">		
+			
+			<form action="a.html" method="get">
+
+				<div class="content">
+
+
+					<table class="table table-bordered  table-striped table-hover">
+						<tr role="row">
+							<th class="tdwidth table-th"><b>아이디</b></th>
+							<th class="table-th"><b>비밀번호</b></th>
+							<th class="table-th"><b>이름</b></th>
+							<th class="table-th"><b>이메일</b></th>
+
+							<!-- <td><b>수정</b></td> -->
+						</tr>
+						<tr role="row" th:each="b : ${customers}">
+							<td th:text="${b.ID}">1</td>
+							<td th:text="${b.PASSWORD}">1</td>
+							<td th:text="${b.NAME}">1</td>
+							<td th:text="${b.EMAIL}">1</td>
+						</tr>
+					</table>
+				</div>
+
+			</form>
+		</article>
+	</div>
+</body>
+</html>

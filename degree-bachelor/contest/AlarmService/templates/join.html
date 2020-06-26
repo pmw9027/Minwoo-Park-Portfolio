@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>회원가입</title>
+    <meta name="Author" content=""/>
+    <link rel="shortcut icon" href="img/hanshin.ico"/>
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous" />
+    
+    <style>
+    .table {
+    text-align: center;
+    width: 100%;
+}
+
+.table-th {
+    text-align: center;
+    font-size: 30px;
+    height: 60px;
+}
+
+.login-form {
+    width: 500px;
+    margin: 0 auto;
+    position: relative;
+    background: #f3f3f3;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        display: block;
+}
+
+.table-button {
+    width: 160px;
+    position: relative;
+    left: 330px;
+    margin-bottom: 10px;
+}
+
+.login-body {
+    position: relative;
+    margin-top: 300px;
+    background-color: gainsboro;
+}
+
+.join-body {
+    position: relative;
+    margin-top: 100px;
+    background-color: gainsboro;
+}
+
+.table-id {
+    position: relative;
+    left: -36%;
+}
+
+.table-pw {
+     position: relative;
+    left: -36%;
+}
+
+.join-form {
+     width: 600px;
+    margin: 0 auto;
+    position: relative;
+    background: #f3f3f3;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        display: block;
+}
+
+.id-identify {
+    position: relative;
+    left: -35px;
+}
+
+.join-td1 {
+    text-align: left;
+    position: relative;
+    left: 20px;
+}
+
+.email {
+     position: relative;
+    left: -125px;
+}
+
+.at {
+    position: relative;
+    left: -80px;
+}
+
+.table-tr {
+    height: 40px;
+}
+
+.join-button {
+    width: 120px;
+    position: relative;
+    left: 460px;
+    margin-bottom: 20px;
+    top: 10px;
+}
+
+.join-table {
+     text-align: center;
+    width: 100%;
+}
+
+.join-td2 {
+    position: relative;
+    left: 10px;
+}
+
+.join-td3 {
+    position: relative;
+    left: 23px;
+}
+
+.loginsuccess-button {
+    width: 200px;
+    position: relative;
+    left: 290px;
+    margin-bottom: 10px;
+}
+
+.table_text {
+    position: relative;
+    left: -90%;
+}
+
+.email_modify {
+     position: relative;
+    left: -85px;
+}
+
+.at_modify {
+    position: relative;
+    left: -66px;
+}
+    </style> 
+ <!--    <script type="text/javascript">
+$(document).ready(function(){
+	  $("#joinbtn").click(function(){
+	    	var items = new Array();
+	    	var item1s = new Array();
+	    	$("input[name=chbox]").each(function(){
+	    	    	if($(this).prop("checked"))
+	    			items.push($(this).val());
+	    	});
+	    	$("input[name=chbox1]").each(function(){
+    	    	if($(this).prop("checked"))
+    			item1s.push($(this).val());
+    		});
+	    	$.ajax({
+	    		type: 'POST',
+	    		url: '/project_taskDelete',
+	    		data: {item : items,item1 : item1s},
+	    		
+	    		success: function(data){
+	    			location.href = '/project_task';
+	    		}
+	    	});
+	    });
+});
+</script> -->
+
+</head>
+<body class="join-body">
+    <div class="container">
+    <form th:action="@{/createWrite}" th:object="${CustomerForm}" method="post">
+        <div class="join-form">
+            <table class="join-table">
+                <th class="table-th"  colspan="4">회원가입</th>
+                <tr class="table-tr">
+                    <td class="join-td1"><b>아이디 : </b></td>
+                    <td><input type="text" placeholder="아이디" name="ID" id="ID"/></td>
+                   <!--  <td><button class="id-identify">중복확인</button></td> -->
+                  <!--  <span th:if="${#fidlds.hasErrors('ID')}" th:errors="*{ID}" class="error-messages">error!</span> -->
+                </tr>
+                   <tr class="table-tr">
+                       <td class="join-td1"><b>비밀번호 : </b></td>
+                    <td><input type="password"  placeholder="비밀번호" name="PASSWORD" id="PASSWORD"/></td>
+              		<!--  <span th:if="${#fidlds.hasErrors('PASSWORD')}" th:errors="*{PASSWORD}" class="error-messages">error!</span>
+              -->
+                </tr>
+                <!--    <tr class="table-tr">
+                    <td class="join-td1"><b>비밀번호 확인 : </b></td>
+                    <td><input type="password" placeholder="비밀번호 확인" name="PASSWORD" id="PASSWORD" th:field="*{PASSWORD}"/></td>
+                </tr> -->
+                 <tr class="table-tr">
+                    <td class="join-td1"><b>이름: </b></td>
+                    <td><input type="text" placeholder="이름" name="NAME" id="NAME"/></td>
+                </tr>
+                <tr class="table-tr">
+                    <td class="join-td1"><b>이메일 : </b></td>
+                    <td><input type="text" placeholder="이메일" name="EMAIL" id="EMAIL"/></td> 
+                </tr>
+               <!--   <tr class="table-tr">
+                    <td class="join-td1"><b>알림방법 : </b></td>
+                    <td class="join-td2">
+                    <input type="checkbox" name="chbox" value="email"/>E-mail &nbsp;&nbsp;
+                    <input type="checkbox" name="chbox" value="kakao"/>카카오톡 &nbsp;&nbsp;
+                    <input type="checkbox" name="chbox" value="sms"/>SMS</td>
+               </td>                     
+ </tr> -->
+              <!--  	<td class="join-td1"><b>알림방법 : </b></td>
+                	<td class="join-select">
+                		<select name="job">
+    						 <option value="">직업 선택</option>
+   							 <option value="email" id="MAIL" name="MAIL">E-mail</option>
+   							 <option value="kakao" id="KAKAO">카카오톡</option>
+    						 <option value="sms" id="SMS">SMS</option>
+						</select>
+               		 </td>
+                -->
+                 <tr class="table-tr">
+                    <td class="join-td1"><b>알림받을 정보 :</b></td>
+                    <td class="join-td3">
+                    	<input type="checkbox" name="chbox1" value="0" />공지사항 &nbsp;&nbsp;
+                    	<input type="checkbox" name="chbox1" value="1"/>장학 &nbsp;&nbsp;
+                    	<input type="checkbox" name="chbox1" value="2"/>컴공사이트
+                    </td>
+              </tr>
+              <!--
+               <td class="join-td1"><b>알림받을 정보 :</b></td>
+                 <td class="join-select">
+                		<select name="job">
+    						 <option value="">정보 선택</option>
+   							 <option value="notice" >공지사항</option>
+   							 <option value="money">장학</option>
+    						 <option value="computer">컴공사이트</option>
+						</select>
+               		 </td>
+                -->
+               
+            </table>
+            <div class="join-button">
+                   <input type="submit" id="joinbtn" value="확인" class="button btn btn-primary"/>
+                   <input type="reset" value="취소" class="button btn btn-danger" onclick="location.href='loginForm'"/>
+                </div>
+        </div>
+        </form>
+    </div>
+
+
+</body>
+</html>

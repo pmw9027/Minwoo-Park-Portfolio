@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>로그인</title>
+	<meta name="Author" content=""/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+	
+    <link rel="shortcut icon" href="img/hanshin.ico"/>
+    
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous" />
+    <style>
+        .table {
+    text-align: center;
+    width: 100%;
+}
+
+.table-th {
+    text-align: center;
+    font-size: 30px;
+    height: 60px;
+}
+
+.login-form {
+    width: 500px;
+    margin: 0 auto;
+    position: relative;
+    background: #f3f3f3;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        display: block;
+}
+
+.table-button {
+    width: 160px;
+    position: relative;
+    left: 330px;
+    margin-bottom: 10px;
+    top: 50px;
+}
+
+.login-body {
+    position: relative;
+    margin-top: 300px;
+    background-color: gainsboro;
+}
+
+.table-id {
+    position: relative;
+    left: -36%;
+}
+
+.table-pw {
+     position: relative;
+    left: -36%;
+}
+
+.kakao_img{
+	width: 200px;
+	height: 30px;
+}
+.kakao_button{
+	margin-top: -60px;
+	margin-left: 110px;
+}
+
+}
+
+    </style>   
+     <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+</head>
+<body class="login-body">
+    
+    <div class="container">
+        <div class="login-form">
+         <form name="form" id="form" th:action="@{login}" method="post"> 
+        <table class="table">
+          <th class="table-th" colspan="2"> 한신대학교 정보</th>
+          <div th:if="${param.error}" class="alert alert-danger"> 잘못된 아이디나 암호입니다.</div>
+            <tr role="row" class="tr_hc tr_hv">
+                <td>아이디 　: </td>
+                <td><input type="text" id="ID" name="ID" placeholder="아이디" class="table-id"/></td>
+            </tr>
+            <tr role="row" class="tr_hc tr_hv">
+                <td>패스워드 : </td>
+                <td><input type="password" id="PASSWORD" name="PASSWORD" placeholder="비밀번호" class="table-pw"/></td>
+            </tr>
+           
+          </table>           
+          <div class="table-button">
+                  <input type="submit" value="로그인" class="button btn btn-primary"/> 
+                 <!--  <input type="reset" value="회원가입" class="button btn btn-primary"
+					onclick="location.href='join'" /> -->
+          </div>
+            </form> 
+            <div class="kakao_button">
+            <a id="kakao-login-btn"></a>
+<a href="http://alpha-developers.kakao.com/logout"></a>
+<script type='text/javascript'>
+  //<![CDATA[
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('3dee48e4ccc6b7755390974f30a54832');
+    // 카카오 로그인 버튼을 생성합니다.
+    Kakao.Auth.createLoginButton({
+      container: '#kakao-login-btn',      
+      success: function(authObj) {
+        alert(JSON.stringify(authObj));
+        console.log(JSON.stringify(authObj));
+      },
+      fail: function(err) {
+         alert(JSON.stringify(err));
+      }
+    });
+  //]]>
+</script>
+            	
+            </div>
+            	<form class="join_button" th:action="@{/create}" method="get">
+            		<input type="submit" class="button btn btn-primary" value="회원가입"/>
+         		</form>
+            </div>
+    </div> 
+
+
+</body>
+</html>

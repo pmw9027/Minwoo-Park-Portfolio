@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "613842772283",
+    "firebase_url": "https://soundberry-cf723.firebaseio.com",
+    "project_id": "soundberry-cf723",
+    "storage_bucket": "soundberry-cf723.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613842772283:android:1621f1289df6274d",
+        "android_client_info": {
+          "package_name": "com.soundberry.hackers.soundberry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "613842772283-idpnghl3ns296frjrj985c6ba8lan1f1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkYtBO6u9c45VZe9UijRmTL1s7PoImigk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
