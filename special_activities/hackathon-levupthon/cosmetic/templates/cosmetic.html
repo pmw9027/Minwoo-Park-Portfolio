@@ -1,0 +1,97 @@
+{% extends "base.html" %}  {% block head %} {% load staticfiles %}
+<script>
+$(document).ready(()=> {
+
+    $("#search_button").click(event => {
+        window.location = '{{request.path}}?query='+$("#search_query").val();
+    })
+});
+</script>
+{% endblock %} {% block content %}{% load staticfiles %}
+
+<style>
+    .image {
+        padding-top: 65px;
+    }
+</style>
+<div class="image">
+    <div class="page-header container-fluid d-flex justify-content-center">
+        <img src="{% static 'logo_tmp.png' %}" class="center-block" style="height:100px">
+    </div>
+</div>
+
+<main role="main">
+    <div class="container">
+        <div class="input-group mb-3">
+            <input id="search_query" type="text" class="form-control" placeholder="Cosmetic's name" aria-label="Cosmetic's name" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button id='search_button' class="btn btn-outline-secondary" type="button" id="button-addon2">
+                        Search
+                </button>
+            </div>
+        </div>
+        <div class="mb-3 bd-example">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Brand
+                </button>
+                <div class="dropdown-menu" style="">
+                    {% for brand in brands%}
+                        <a class="dropdown-item" href="{{ request.path }}?brand={{brand.id}}">{{ brand.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <!-- /btn-group -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</button>
+                <div class="dropdown-menu">
+                    {% for category in categories %}
+                        <a class="dropdown-item" href="{{ request.path }}?category={{category.id}}">{{ category.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- /btn-group -->
+        </div>
+
+        <div class="row">
+            {% for cosmetic in cosmetics.all %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" src="{{ cosmetic.thumbnail.url }}" alt="card image">
+                    <div class="card-body">
+                        <p class="card-text">{{ cosmetic.name }}</p>
+                        <p class="card-text">{{ cosmetic.summary }}</p>                        
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="{% url 'cosmetic_detail' cosmetic.id %}">more view</a>
+                            </div>
+                             <div class="col-sm-9">
+                                <div class="review-block-rate">
+                                    <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-xs {% if cosmetic.rate_avg > 1 %} btn-warning {% else %} btn-default btn-grey {% endif %}" aria-label="Left Align">
+                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-xs {% if cosmetic.rate_avg > 2 %} btn-warning {% else %} btn-default btn-grey {% endif %}" aria-label="Left Align">
+                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-xs {% if cosmetic.rate_avg > 3 %} btn-warning {% else %} btn-default btn-grey {% endif %}" aria-label="Left Align">
+                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-xs {% if cosmetic.rate_avg > 4 %} btn-warning {% else %} btn-default btn-grey {% endif %}" aria-label="Left Align">
+                                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+{% load staticfiles %}
+    <head>
+        <style>
+            .image{
+                padding-top : 65px;
+            }
+        </style>
+</head>
+    <body>
+        <div class ="image">
+            <div class="page-header container-fluid d-flex justify-content-center">
+                <img src="static/logo_tmp.png" class="center-block" style="height:100px">
+            </div>
+        </div>
+        
+        <div class="container-fluid d-flex justify-content-center">
+            <img src="{% static 'cosmetic.jpg' %}" class="img-fluid" alt="Responsive image">
+        </div>
+</body>
+{% endblock %}

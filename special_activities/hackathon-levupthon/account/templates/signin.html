@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block head %} {% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/signin.css'%}" /> {% endblock %} {% block content %}
+
+<div class="wrapper">
+    <div class="box">
+        <h2>Hello!</h2>
+        <br>
+        <form method="post" action="" class="form_input">
+            {% csrf_token %}
+            <!-- {{ form.as_p }} -->
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">ID</span>
+                </div>
+                <input required type="text" maxlength="150" id="id_username" name="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">PW</span>
+                </div>
+                <input required id="id_password" name="password" type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <input class="btn btn-lg btn-primary justify-content-end btn_confirm" type="submit" value="Sign-in" />
+        </form>
+    </div>
+
+</div>
+{% endblock %}

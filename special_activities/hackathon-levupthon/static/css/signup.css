@@ -1,0 +1,39 @@
+*{
+    line-height:110%;
+}
+.wrapper {
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+    height:100vh;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:#dfdfdf;
+}
+.form_title{
+    align-self:center;
+}
+.box{
+    padding:12px 24px;
+    margin-bottom:20px;
+    min-height:400px;
+    min-width:200px;
+    display:flex;
+    flex-flow:column nowrap;
+    background-color:white;
+    box-shadow: 2px 2px 2px 2px gray;
+}
+.helptext{
+    font-size:12px;
+    color:rgb(120,120,255);
+}
+label{
+    font-size:16px;
+    font-weight:bold;
+}
+.btn_confirm{
+    align-self:flex-end;
+}
