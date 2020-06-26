@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_post"
+            android:icon="@drawable/post"
+            android:title="게시판" />
+        <item
+            android:id="@+id/nav_account"
+            android:icon="@drawable/account"
+            android:title="계정" />
+        <item
+            android:id="@+id/nav_tools"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="환경설정" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/logout"
+            android:title="로그아웃" />
+
+
+    </group>
+    <item android:title="">
+        <menu>
+            <item android:title="version 1.0"/>
+        </menu>
+    </item>
+
+</menu>
