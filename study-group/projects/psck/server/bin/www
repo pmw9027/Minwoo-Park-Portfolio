@@ -1,0 +1,130 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+var debug = require('debug')('psck-server:server');
+var http = require('http');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+var io = require('socket.io')(server);
+var Message = require("../models/message");
+
+io.on('connection', function(socket){
+    socket.broadcast.emit('notification',{m_id:'',m_content:'client in'});
+    Message.find({}, function(err, account) {
+
+        if(err) {
+
+        }
+        else {
+
+            account.forEach(function (i) {
+                socket.emit('chat message',i)
+            })
+
+        }
+    })
+
+    socket.on('chat message', function(msg){
+        socket.broadcast.emit('chat message',msg); // 자신을 제외하고 다른 클라이언트에게 보냄
+
+        var new_message = new Message(msg);
+
+        new_message.save(function (err, createdTodoObject) {
+            if (err) {
+                console.log(err)
+            }
+            // This createdTodoObject is the same one we saved, but after Mongo
+            // added its additional properties like _id.
+            else {
+            }
+        });
+    });
+
+    socket.on('disconnect', function () {
+
+        socket.broadcast.emit('notification',{m_id:'',m_content:'client out'});
+
+    });
+});
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
+
