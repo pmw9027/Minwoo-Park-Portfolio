@@ -1,0 +1,22 @@
+.calendar{
+    border-collapse: collapse;
+    margin-top: 0.546875px;
+    margin-right: 0px !important;
+    margin-bottom: 0px !important;
+    margin-left: 0.0625px;
+    padding: 0px !important;
+    width: 100% !important;
+    height: 700px;"
+}
+.calendarform{
+    overflow: hidden;
+    display: block;
+    height: 650px;
+    width: 100%;
+    margin-left: 20px;
+}
+.calendarforms{
+    float: none;
+    width: 100%;
+    display: block;
+}

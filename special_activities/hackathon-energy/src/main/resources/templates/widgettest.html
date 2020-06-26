@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css" />
+    <script type="text/javascript" src="../../scripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../scripts/demos.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxdate.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxscheduler.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxscheduler.api.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../../jqwidgets/globalization/globalize.culture.de-DE.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var appointments = new Array();
+            var appointment1 = {
+                id: "id1",
+                description: "George brings projector for presentations.",
+                location: "",
+                subject: "Quarterly Project Review Meeting",
+                calendar: "Room 1",
+                start: new Date(2016, 10, 23, 9, 0, 0),
+                end: new Date(2016, 10, 23, 16, 0, 0)
+            }
+            var appointment2 = {
+                id: "id2",
+                description: "",
+                location: "",
+                subject: "IT Group Mtg.",
+                calendar: "Room 2",
+                start: new Date(2016, 10, 24, 10, 0, 0),
+                end: new Date(2016, 10, 24, 15, 0, 0)
+            }
+            var appointment3 = {
+                id: "id3",
+                description: "",
+                location: "",
+                subject: "Course Social Media",
+                calendar: "Room 3",
+                start: new Date(2016, 10, 27, 11, 0, 0),
+                end: new Date(2016, 10, 27, 13, 0, 0)
+            }
+            var appointment4 = {
+                id: "id4",
+                description: "",
+                location: "",
+                subject: "New Projects Planning",
+                calendar: "Room 2",
+                start: new Date(2016, 10, 23, 16, 0, 0),
+                end: new Date(2016, 10, 23, 18, 0, 0)
+            }
+            var appointment5 = {
+                id: "id5",
+                description: "",
+                location: "",
+                subject: "Interview with James",
+                calendar: "Room 1",
+                start: new Date(2016, 10, 25, 15, 0, 0),
+                end: new Date(2016, 10, 25, 17, 0, 0)
+            }
+            var appointment6 = {
+                id: "id6",
+                description: "",
+                location: "",
+                subject: "Interview with Nancy",
+                calendar: "Room 4",
+                start: new Date(2016, 10, 26, 14, 0, 0),
+                end: new Date(2016, 10, 26, 16, 0, 0)
+            }
+            appointments.push(appointment1);
+            appointments.push(appointment2);
+            appointments.push(appointment3);
+            appointments.push(appointment4);
+            appointments.push(appointment5);
+            appointments.push(appointment6);
+            // prepare the data
+            var source =
+                {
+                    dataType: "array",
+                    dataFields: [
+                        { name: 'id', type: 'string' },
+                        { name: 'description', type: 'string' },
+                        { name: 'location', type: 'string' },
+                        { name: 'subject', type: 'string' },
+                        { name: 'calendar', type: 'string' },
+                        { name: 'start', type: 'date' },
+                        { name: 'end', type: 'date' }
+                    ],
+                    id: 'id',
+                    localData: appointments
+                };
+            var adapter = new $.jqx.dataAdapter(source);
+            $("#scheduler").jqxScheduler({
+                date: new $.jqx.date(2016, 11, 23),
+                width: 850,
+                height: 600,
+                source: adapter,
+                view: 'weekView',
+                showLegend: true,
+                ready: function () {
+                    $("#scheduler").jqxScheduler('ensureAppointmentVisible', 'id1');
+                },
+                resources:
+                    {
+                        colorScheme: "scheme05",
+                        dataField: "calendar",
+                        source:  new $.jqx.dataAdapter(source)
+                    },
+                appointmentDataFields:
+                    {
+                        from: "start",
+                        to: "end",
+                        id: "id",
+                        description: "description",
+                        location: "location",
+                        subject: "subject",
+                        resourceId: "calendar"
+                    },
+                views:
+                    [
+                        'dayView',
+                        'weekView',
+                        'monthView'
+                    ]
+            });
+        });
+    </script>
+</head>
+<body class='default'>
+<div class="jqx-tabs-content jqx-tabs-content-jqxtabs jqx-widget-content jqx-widget-content-jqxtabs jqx-rc-b jqx-rc-b-jqxtabs" style="float: none; width: 100%; height: auto; display: block;"><div style="overflow: hidden; display: block; height: 1631px; width: 910px; margin-left: 20px;" id="tabs-1" role="tabpanel" class="jqx-tabs-content-element jqx-tabs-content-element-jqxtabs jqx-rc-b jqx-rc-b-jqxtabs">
+    <table border="0" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
+        <tbody><tr>
+            <td>
+                <div id="divDescription"><div style="width: 800px; margin: 10px;">jqxScheduler widget displays a set of Appointments in Day, Week, Month, Timeline Day, Timeline Week and Timeline Month views
+                </div></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="innerdemoContainer"><iframe frameborder="0" src="http://www.jqwidgets.com/jquery-widgets-demo/demos/jqxscheduler/defaultfunctionality.htm?light" id="jqxInnerdemoContainer" style="border-collapse: collapse; margin-top: 0.546875px; margin-right: 0px !important; margin-bottom: 0px !important; margin-left: 0.0625px; padding: 0px !important; width: 900px !important; height: 1040px;"></iframe></div>
+            </td>
+        </tr>
+        </tbody></table>
+</div><div style="overflow-x: auto; overflow-y: hidden; display: none; height: 2781px; width: 910px;" id="tabs-2" role="tabpanel" class="jqx-tabs-content-element jqx-tabs-content-element-jqxtabs jqx-rc-b jqx-rc-b-jqxtabs"><pre style="border:none !important; padding: 0px !important; overflow: auto; margin-top: 5px; margin-bottom: 5px;" class="code"><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;!DOCTYPE html&gt;</span><div></div><div></div><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;html lang=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"en"</span>&gt;</span><div></div><div></div><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;head&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;title id=<span style=" clear: both; padding: 0px; margin: 0px; color: #080;">'Description'</span>&gt;</span>jqxScheduler widget displays a <span style="color: #11a;">set </span>of Appointments in Day, Week, Month, Timeline Day, Timeline Week and Timeline Month views<div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/title&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;link rel=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"stylesheet" href="../../jqwidgets/styles/jqx.base.css" type="text/css"</span> /&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../scripts/jquery-1.11.1.min.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../scripts/demos.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxcore.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxbuttons.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxscrollbar.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxdata.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxdate.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxscheduler.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxscheduler.api.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxdatetimeinput.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxmenu.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxcalendar.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxtooltip.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxwindow.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxcheckbox.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxlistbox.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxdropdownlist.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxnumberinput.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxradiobutton.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/jqxinput.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/globalization/globalize.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript" src="../../jqwidgets/globalization/globalize.culture.de-DE.js"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;script type=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"text/javascript"</span>&gt;</span><div></div><div></div>        $(document).ready(<span style="color: #11a;">function </span>() {<div></div><div></div>            <span style="color: #11a;">var </span>appointments = new Array();<div></div><div></div><div></div><div></div>            <span style="color: #11a;">var </span>appointment1 = {<div></div><div></div>                id: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"id1"</span>,<div></div><div></div>                description: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"George brings projector <span style="color: #11a;">for </span>presentations."</span>,<div></div><div></div>                location: "",<div></div><div></div>                subject: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"Quarterly Project Review Meeting"</span>,<div></div><div></div>                calendar: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"Room 1"</span>,<div></div><div></div>                start: new Date(2016, 10, 23, 9, 0, 0),<div></div><div></div>                end: new Date(2016, 10, 23, 16, 0, 0)<div></div><div></div>            }<div></div><div></div><div></div><div></div>            <span style="color: #11a;">var </span>appointment2 = {<div></div><div></div>                id: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"id2"</span>,<div></div><div></div>                description: "",<div></div><div></div>                location: "",<div></div><div></div>                subject: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"IT Group Mtg."</span>,<div></div><div></div>                calendar: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"Room 2"</span>,<div></div><div></div>                start: new Date(2016, 10, 24, 10, 0, 0),<div></div><div></div>                end: new Date(2016, 10, 24, 15, 0, 0)<div></div><div></div>            }<div></div><div></div><div></div><div></div>            <span style="color: #11a;">var </span>appointment3 = {<div></div><div></div>                id: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"id3"</span>,<div></div><div></div>                description: "",<div></div><div></div>                location: "",<div></div><div></div>                subject: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"Course Social Media"</span>,<div></div><div></div>                calendar: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"Room 3"</span>,<div></div><div></div>                start: new Date(2016, 10, 27, 11, 0, 0),<div></div><div></div>                end: new Date(2016, 10, 27, 13, 0, 0)<div></div><div></div>            }<div></div><div></div><div></div><div></div>            <span style="color: #11a;">var </span>appointment4 = {<div></div><div></div>                id: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"id4"</span>,<div></div><div></div>                description: "",<div></div><div></div>                location: "",<div></div><div></div>                subject: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"New Projects Planning"</span>,<div></div><div></div>                calendar: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"Room 2"</span>,<div></div><div></div>                start: new Date(2016, 10, 23, 16, 0, 0),<div></div><div></div>                end: new Date(2016, 10, 23, 18, 0, 0)<div></div><div></div>            }<div></div><div></div><div></div><div></div>            <span style="color: #11a;">var </span>appointment5 = {<div></div><div></div>                id: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"id5"</span>,<div></div><div></div>                description: "",<div></div><div></div>                location: "",<div></div><div></div>                subject: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"Interview <span style="color: #11a;">with </span>James"</span>,<div></div><div></div>                calendar: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"Room 1"</span>,<div></div><div></div>                start: new Date(2016, 10, 25, 15, 0, 0),<div></div><div></div>                end: new Date(2016, 10, 25, 17, 0, 0)<div></div><div></div>            }<div></div><div></div><div></div><div></div>            <span style="color: #11a;">var </span>appointment6 = {<div></div><div></div>                id: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"id6"</span>,<div></div><div></div>                description: "",<div></div><div></div>                location: "",<div></div><div></div>                subject: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"Interview <span style="color: #11a;">with </span>Nancy"</span>,<div></div><div></div>                calendar: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"Room 4"</span>,<div></div><div></div>                start: new Date(2016, 10, 26, 14, 0, 0),<div></div><div></div>                end: new Date(2016, 10, 26, 16, 0, 0)<div></div><div></div>            }<div></div><div></div>            appointments.push(appointment1);<div></div><div></div>            appointments.push(appointment2);<div></div><div></div>            appointments.push(appointment3);<div></div><div></div>            appointments.push(appointment4);<div></div><div></div>            appointments.push(appointment5);<div></div><div></div>            appointments.push(appointment6);<div></div><div></div><div></div><div></div><span style="clear: both; padding: 0px; margin: 0px; color: #a533d4;">            // prepare the data</span><div></div><div></div>            <span style="color: #11a;">var </span>source =<div></div><div></div>            {<div></div><div></div>                dataType: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"array"</span>,<div></div><div></div>                dataFields: [<div></div><div></div>                    { name: <span style=" clear: both; padding: 0px; margin: 0px; color: #080;">'id', type: 'string'</span> },<div></div><div></div>                    { name: <span style=" clear: both; padding: 0px; margin: 0px; color: #080;">'description', type: 'string'</span> },<div></div><div></div>                    { name: <span style=" clear: both; padding: 0px; margin: 0px; color: #080;">'location', type: 'string'</span> },<div></div><div></div>                    { name: <span style=" clear: both; padding: 0px; margin: 0px; color: #080;">'subject', type: 'string'</span> },<div></div><div></div>                    { name: <span style=" clear: both; padding: 0px; margin: 0px; color: #080;">'calendar', type: 'string'</span> },<div></div><div></div>                    { name: <span style=" clear: both; padding: 0px; margin: 0px; color: #080;">'start', type: 'date'</span> },<div></div><div></div>                    { name: <span style=" clear: both; padding: 0px; margin: 0px; color: #080;">'end', type: 'date'</span> }<div></div><div></div>                ],<div></div><div></div>                id: <span style=" clear: both; padding: 0px; margin: 0px; color: #080;">'id'</span>,<div></div><div></div>                localData: appointments<div></div><div></div>            };<div></div><div></div>            <span style="color: #11a;">var </span>adapter = new $.jqx.dataAdapter(source);<div></div><div></div>            $(<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"#scheduler"</span>).<span style="color: #666b74;">jqxScheduler</span>({<div></div><div></div>                date: new $.jqx.date(2016, 11, 23),<div></div><div></div>                <span style="color: #666b74;">width:</span> 850,<div></div><div></div>                <span style="color: #666b74;">height:</span> 600,<div></div><div></div>                source: adapter,<div></div><div></div>                view: <span style=" clear: both; padding: 0px; margin: 0px; color: #080;">'weekView'</span>,<div></div><div></div>                showLegend: true,<div></div><div></div>                ready: <span style="color: #11a;">function </span>() {<div></div><div></div>                    $(<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"#scheduler"</span>).<span style="color: #666b74;">jqxScheduler</span>(<span style=" clear: both; padding: 0px; margin: 0px; color: #080;">'ensureAppointmentVisible', 'id1'</span>);<div></div><div></div>                },<div></div><div></div>                resources:<div></div><div></div>                {<div></div><div></div>                    colorScheme: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"scheme05"</span>,<div></div><div></div>                    <span style="color: #666b74;">dataField:</span> <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"calendar"</span>,<div></div><div></div>                    source:  new $.jqx.dataAdapter(source)<div></div><div></div>                },<div></div><div></div>                appointmentDataFields:<div></div><div></div>                {<div></div><div></div>                    from: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"start"</span>,<div></div><div></div>                    to: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"end"</span>,<div></div><div></div>                    id: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"id"</span>,<div></div><div></div>                    description: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"description"</span>,<div></div><div></div>                    location: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"location"</span>,<div></div><div></div>                    subject: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"subject"</span>,<div></div><div></div>                    resourceId: <span style="clear: both; padding: 0px; margin: 0px; color: #080;">"calendar"</span><div></div><div></div>                },<div></div><div></div>                views:<div></div><div></div>                [<div></div><div></div>                    <span style=" clear: both; padding: 0px; margin: 0px; color: #080;">'dayView'</span>,<div></div><div></div>                    <span style=" clear: both; padding: 0px; margin: 0px; color: #080;">'weekView'</span>,<div></div><div></div>                    <span style=" clear: both; padding: 0px; margin: 0px; color: #080;">'monthView'</span><div></div><div></div>                ]<div></div><div></div>            });<div></div><div></div>        });<div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/script&gt;</span><div></div><div></div><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/head&gt;</span><div></div><div></div><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;body class=<span style=" clear: both; padding: 0px; margin: 0px; color: #080;">'default'</span>&gt;</span><div></div><div></div>    <span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;div id=<span style="clear: both; padding: 0px; margin: 0px; color: #080;">"scheduler"</span>&gt;</span><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/div&gt;</span><div></div><div></div><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/body&gt;</span><div></div><div></div><span style="clear: both; padding: 0px; margin: 0px; color: #11a;">&lt;/html&gt;</span><div></div><div></div><div></div></pre></div><div style="overflow: hidden; display: none; height: 1631px; width: 910px;" id="tabs-3" role="tabpanel" class="jqx-tabs-content-element jqx-tabs-content-element-jqxtabs jqx-rc-b jqx-rc-b-jqxtabs"><iframe frameborder="0" src="../../documentation/jqxscheduler/jqxscheduler-api.htm" id="widgetAPI" style="height: 1631px; border-collapse: collapse; border:none !important; overflow-y: hidden; width: 900px !important;"></iframe></div></div>
+</body>
+</html>

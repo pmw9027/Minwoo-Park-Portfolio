@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>SNU Energy Saving System</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- MetisMenu CSS -->
+    <link href="/css/metisMenu.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link href="/css/sb-admin-2.css" rel="stylesheet"/>
+
+    <!-- Morris Charts CSS -->
+    <link href="/css/morris.css" rel="stylesheet"/>
+
+    <!-- Custom Fonts -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body xmlns:th="http://www.w3.org/1999/xhtml">
+
+<div id="wrapper">
+    <!-- header -->
+    <div th:replace="header :: copy"></div>
+    <!--nav-->
+    <div th:replace="nav :: copy"></div>
+
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">SNU Energy Saving System</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="jumbotron" th:with="firstPer=${weather[0]}">
+                    <span>
+                        <span th:if="${firstPer.wfen} == 'Mostly Cloudy'">
+                            <i class="fa fa-cloud" style="font-size: 3em"></i>
+                            <span th:text="${firstPer.temp}" style="font-size: 3em">Jumbotron</span>
+                            <b style="font-size: 3em">℃</b>
+
+                        </span>
+                        </span>
+                    <p>
+                      현재 서울특별시 관악구 신림동 날씨는 <span th:text="${firstPer.wfen}"/> 이며 온도는 <span th:text="${firstPer.temp}"/> 입니다.
+                        냉방기 가동을 할 필요가 없습니다. 온풍기 가동을 할 필요가 없습니다.
+                    </p>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    Actions
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li><a href="#">101</a></li>
+                                    <li><a href="#">102</a></li>
+                                    <li><a href="#">103</a></li>
+                                    <li><a href="#">104</a></li>
+                                    <li><a href="#">105</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel-heading -->
+
+                    <div class="panel-body">
+                        <div id="morris-area-chart"></div>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-4 -->
+    </div>
+    <!-- /.row -->
+</div>
+
+<!-- /#page-wrapper -->
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="/js/metisMenu.min.js"></script>
+
+<!-- Morris Charts JavaScript -->
+<script src="/js/raphael.min.js"></script>
+<script src="/js/morris.min.js"></script>
+<script src="/js/morris-data.js" th:inline="javascript"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/sb-admin-2.js"></script>
+
+</body>
+
+</html>
