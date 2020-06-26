@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  angular:
+    build: .
+    restart: always
+    environment:
+      PASS: 1 
+      # MYSQL_ROOT_PASSWORD: example
+    ports:
+      - 80:80
+

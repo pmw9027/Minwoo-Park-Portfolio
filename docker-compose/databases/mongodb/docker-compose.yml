@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  mongodb-express:
+    image: mongo-express:latest
+    restart: always
+    ports:
+      - 8010:8081
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=docdb-2019-11-27-07-38-20.cluster-cpeaz1i93nzx.ap-northeast-2.docdb.amazonaws.com
+      - ME_CONFIG_BASICAUTH_USERNAME=eastblue
+      - ME_CONFIG_BASICAUTH_PASSWORD=dnjswndus1!
+      - ME_CONFIG_SITE_SSL_ENABLED=true 
+#      - ME_CONFIG_SITE_SSL_KEY_PATH=rds-combined-ca-bundle.pem
+      - ME_CONFIG_SITE_SSL_CRT_PATH=rds-combined-ca-bundle.pem
