@@ -1,3 +1,0 @@
-mock
-scipy
-numpy
