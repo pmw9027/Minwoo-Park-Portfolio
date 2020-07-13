@@ -8,8 +8,8 @@ table {
 
 |NO.|Period|Duration|No. of <br> participants|Project Name|GitHub <br> Repository|
 |:--:|:-:|:-:|:-:|:-:|:-:|
-|1| (2019) <br> 12.02-12.07 | 6 days |1| `A Education for AI(Experienced)` | [Link][7] |
-|2| (2019) <br> 11.11-11.16 | 6 days |1| `A Education for AI(BASIC)` | [Link][8] |
+|1| (2019) <br> 12.02-12.07 | 6 days |1| `Education for AI(Experienced)` | [Link][7] |
+|2| (2019) <br> 11.11-11.16 | 6 days |1| `Education for AI(BASIC)` | [Link][8] |
 |3| (2019) <br> 11.30-12.01 | 2 days <br> w/o sleeping |3| `LEVELUPTHON` | [Link][2] |
 |4| (2019) <br> 01.01-09.01 | 8 months |1| `Research for my master's degree` | [Link][1] |
 |5| (2019) <br> 10.06- ~ing | 1 month |1| `Study for Improving Programing Skills` | [Link][7] |
